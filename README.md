@@ -15,7 +15,7 @@ if that's your thing.
 
 ### What's the catch?
 I need to know your objects type when I deserialize later, so I add an extra element to the array `__TYPE__` 
-(you can change it). For this reason, it's a good idea to use namespaces. Also, probalby if you change your class
+(you can change it). For this reason, it's a good idea to use namespaces. Also, probably if you change your class
 namespace, you won't be able to deserialize an object. If anyone uses this and that's a problem, we'll let you define a
 map (boo!) so that you can survive a refactoring.
 
