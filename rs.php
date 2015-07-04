@@ -11,9 +11,10 @@ echo "\n-----------------------------------\n";
 $obj = $rs->deserialize($ser);
 print_r($obj);
 
+echo "test equality: " . ($obj == $dummyA) . "\n";
 class RobertSerializer
 {
-	public $typeKey = '__type__';
+	public $typeKey = '__TYPE__';
 	public function deserialize($o)
 	{
 		if (gettype($o) != 'array') { throw new \Exception('Can only deserialize array'); }
@@ -43,6 +44,7 @@ class RobertSerializer
 				}
 				//echo "$key\t" . is_array($value) . "\n";
 			}
+			if ($rc->hasMethod('__wakeup')) { $out->__wakeup(); }
 		}
 		else
 		{ //array
@@ -64,6 +66,7 @@ class RobertSerializer
 		{
 			$out[$this->typeKey] = get_class($o);
 			$rc = new \ReflectionClass($o);
+			if ($rc->hasMethod('__wakeup')) { $o->__sleep(); }
 			foreach ($rc->getProperties() as $p)
 			{
 				$p->setAccessible(true);
