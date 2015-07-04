@@ -1,0 +1,18 @@
+{
+    "name": "robertlabrie/robertserializer",
+    "description": "My serializer",
+    "license": "GPL V2",
+    "authors": [
+        {
+            "name": "Robert Labrie",
+            "email": "robert.labrie@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "RobertSerializer": "src/"
+        }
+    }
+}
+

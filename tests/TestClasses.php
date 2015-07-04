@@ -1,6 +1,6 @@
 <?php
 
-namespace foo;
+namespace TestClasses;
 
 class dummyA
 {

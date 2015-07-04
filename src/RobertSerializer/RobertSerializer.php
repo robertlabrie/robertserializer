@@ -1,17 +1,6 @@
 <?php
-require_once('dummy.php');
+namespace RobertSerializer;
 
-$rs = new \RobertSerializer();
-$dummyA = new \foo\dummyA();
-
-$ser = $rs->serialize($dummyA);
-print_r($ser);
-
-echo "\n-----------------------------------\n";
-$obj = $rs->deserialize($ser);
-print_r($obj);
-
-echo "test equality: " . ($obj == $dummyA) . "\n";
 class RobertSerializer
 {
 	public $typeKey = '__TYPE__';
@@ -31,7 +20,6 @@ class RobertSerializer
 					{
 						$rc->getProperty($key)->setValue($out,$this->deserialize($value));
 					}
-					//echo "$key\t" . $rc->hasProperty($key) . "\n";
 				}
 				else
 				{
@@ -42,7 +30,6 @@ class RobertSerializer
 						$p->setValue($out,$value);
 					}
 				}
-				//echo "$key\t" . is_array($value) . "\n";
 			}
 			if ($rc->hasMethod('__wakeup')) { $out->__wakeup(); }
 		}
