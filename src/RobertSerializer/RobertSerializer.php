@@ -51,7 +51,7 @@ class RobertSerializer
 		{
 			$out[$this->typeKey] = get_class($o);
 			$rc = new \ReflectionClass($o);
-			if ($rc->hasMethod('__wakeup')) { $o->__sleep(); }
+			if ($rc->hasMethod('__sleep')) { $o->__sleep(); }
 			foreach ($rc->getProperties() as $p)
 			{
 				$p->setAccessible(true);
