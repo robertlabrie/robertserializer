@@ -14,20 +14,16 @@ class RobertSerializer
 			$out = $rc->newInstanceWithoutConstructor();
 			foreach ($o as $key => $value)
 			{
-				
-				if (is_array($value))
+				if ($rc->hasProperty($key))
 				{
-					if ($rc->hasProperty($key))
+					$p = $rc->getProperty($key);
+					$p->setAccessible(true);
+					if (is_array($value))
 					{
-						$rc->getProperty($key)->setValue($out,$this->deserialize($value));
+						$p->setValue($out,$this->deserialize($value));
 					}
-				}
-				else
-				{
-					if ($rc->hasProperty($key))
+					else
 					{
-						$p = $rc->getProperty($key);
-						$p->setAccessible(true);
 						$p->setValue($out,$value);
 					}
 				}
