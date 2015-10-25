@@ -4,6 +4,7 @@ namespace RobertSerializer;
 class RobertSerializer
 {
 	public $typeKey = '__TYPE__';
+	public $debug = false;
 	public function deserialize($o)
 	{
 		if (gettype($o) != 'array') { throw new \Exception('Can only deserialize array'); }
@@ -38,6 +39,7 @@ class RobertSerializer
 			$out = Array();
 			foreach ($o as $key => $value)
 			{
+				if ($this->debug) { echo "deserializing $key\n"; }
 				if (is_array($value)) { $out[$key] = $this->deserialize($value); }
 				else { $out[$key] = $value; }
 			}
